@@ -1,5 +1,5 @@
 import sys  # Import the 'sys' module, which gives us access to system-related functions.
-from assets import art  # Import the 'logo' variable from the 'art.py' file, which likely contains a fancy text logo.
+from assets import art  # Import the 'logo' variable from the 'art.py' file, which is in the assets folder.
 
 # Define functions for basic mathematical operations.
 def add(n1, n2):
