@@ -105,7 +105,7 @@ def main():
     main()  # Restart the program.
   except ValueError:  # Catch a ValueError (usually happens when an invalid number is entered).
     print("Invalid numbers entered!")
-    main()
+    main()  # Restart the program.
 
 # Increase the recursion limit to handle multiple continuous calculations.
 sys.setrecursionlimit(2147483647)
