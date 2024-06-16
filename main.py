@@ -103,6 +103,9 @@ def main():
 
   except KeyError:  # Catch a KeyError (usually happens when an invalid operation symbol is entered).
     main()  # Restart the program.
+  except ValueError:  # Catch a ValueError (usually happens when an invalid number is entered).
+    print("Invalid numbers entered!")
+    main()
 
 # Increase the recursion limit to handle multiple continuous calculations.
 sys.setrecursionlimit(2147483647)
