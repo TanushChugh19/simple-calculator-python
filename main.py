@@ -1,3 +1,4 @@
+import pyuac  # Import the 'pyuac' module, which helps us check if the user running the program is an admin or not. This is necessary because we don't want the CMD windows to pop up.
 import sys  # Import the 'sys' module, which gives us access to system-related functions.
 from assets import art  # Import the 'logo' variable from the 'art.py' file, which is in the assets folder.
 
@@ -107,4 +108,10 @@ def main():
 sys.setrecursionlimit(2147483647)
 
 # Start the program by calling the main function.
-main()
+# Checking if the user is an admin.
+if __name__ == "__main__":
+    if not pyuac.isUserAdmin():
+        print("Re-launching as admin!")
+        pyuac.runAsAdmin()
+    else:        
+        main()  # Already an admin here.
