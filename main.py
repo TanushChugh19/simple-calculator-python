@@ -92,6 +92,7 @@ def main():
           exit()  # Exit the program.
         else:
           print("Continuing to run the app because you didn't provide a valid input!")
+          main() # Restart the program.
     elif first_wants_to_continue == "n":
       loopState = False  # Stop the loop and restart the program.
       main()
@@ -100,12 +101,13 @@ def main():
       exit()  # Exit the program.
     else:
       print("Continuing to run the app because you didn't provide a valid input!")
+      main() # Restart the program.
 
   except KeyError:  # Catch a KeyError (usually happens when an invalid operation symbol is entered).
     main()  # Restart the program.
   except ValueError:  # Catch a ValueError (usually happens when an invalid number is entered).
     print("Invalid numbers entered!")
-    main()  # Restart the program.
+    main()
 
 # Increase the recursion limit to handle multiple continuous calculations.
 sys.setrecursionlimit(2147483647)
