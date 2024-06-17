@@ -4,7 +4,6 @@ import time  # Import the 'time' module, which helps us set a slight delay when 
 import webbrowser  # Import the 'webbrowser' module, which helps us open links automatically.
 from assets import art  # Import the 'logo' variable from the 'art.py' file, which is in the assets folder.
 from assets import loader  # Import the 'loader' for loading animations.
-from replit import clear  # Import the 'clear' function from the 'replit' module.
 
 # Define functions for basic mathematical operations.
 def add(n1, n2):
