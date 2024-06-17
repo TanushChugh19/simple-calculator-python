@@ -105,6 +105,7 @@ def main():
           time.sleep(1)  # Delay of 1 second.
           print("Goodbye!")  # Saying goodbye before exit.
           time.sleep(0.2)  # Giving some time for the user to read the Goodbye message.
+          webbrowser.open(url, new=0, autoraise=True)  # Opens rick roll 😂!
           exit()  # Exit the program.
         else:
           print("Continuing to run the app because you didn't provide a valid input!")
@@ -122,6 +123,7 @@ def main():
       time.sleep(1)  # Delay of 1 second.
       print("Goodbye!")  # Saying goodbye before exit.
       time.sleep(0.2)  # Giving some time for the user to read the Goodbye message.
+      webbrowser.open(url, new=0, autoraise=True)  # Opens rick roll 😂!
       exit()  # Exit the program.
     else:
       print("Continuing to run the app because you didn't provide a valid input!")
@@ -136,17 +138,10 @@ def main():
 # Increase the recursion limit to handle multiple continuous calculations.
 sys.setrecursionlimit(2147483647)
 
-# Start the program by calling the main function.
 # Checking if the user is an admin.
-
-try:  # Use a 'try...except' block to handle potential errors, such as: The user is refuse to run the program as an admin.
-  if __name__ == "__main__":
-      if not pyuac.isUserAdmin():  # Checking if the user is an admin.
-          print("Re-launching as admin!")
-          pyuac.runAsAdmin()  # Restarting the program as an admin.
-      else:        
-          main()  # Already an admin here.
-except:
-  print("There was a problem running the program!\nYou need to run the program as an administrator to run it.")  # Printing error message.
-  loader.load_anim(1, 6)  # Loader function.
-  webbrowser.open(url, new=0, autoraise=True)  # Opens rick roll 😂!
+if __name__ == "__main__":
+    if not pyuac.isUserAdmin():  # Checking if the user is an admin.
+        print("Re-launching as admin!")
+        pyuac.runAsAdmin()  # Restarting the program as an admin.
+    else:        
+        main()  # Already an admin here.
