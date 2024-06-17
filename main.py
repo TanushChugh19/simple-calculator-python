@@ -1,6 +1,10 @@
 import pyuac  # Import the 'pyuac' module, which helps us check if the user running the program is an admin or not. This is necessary because we don't want the CMD windows to pop up.
 import sys  # Import the 'sys' module, which gives us access to system-related functions.
+import time  # Import the 'time' module, which helps us set a slight delay when trying to exit the program.
+import webbrowser  # Import the 'webbrowser' module, which helps us open links automatically.
 from assets import art  # Import the 'logo' variable from the 'art.py' file, which is in the assets folder.
+from assets import loader  # Import the 'loader' for loading animations.
+from replit import clear  # Import the 'clear' function from the 'replit' module.
 
 # Define functions for basic mathematical operations.
 def add(n1, n2):
@@ -31,8 +35,13 @@ operations = {
   "sqrt": sqrt,
 }
 
+# Create a URL variable for opening in case the program fails to run.
+url = "https://www.youtube.com/watch?v=xMHJGd3wwZk/"
+
 def main():
   print(art.logo)  # Display the imported logo.
+  print("The calculator is loading")  # Loading message.
+  loader.load_anim(2, 5)  # Loader function.
 
   try:  # Use a 'try...except' block to handle potential errors.
     num1 = float(input("What's the first number?\n"))  # Get the first number from the user and convert it to a decimal.
@@ -88,7 +97,15 @@ def main():
           loopState = False  # Stop the calculation loop and restart the program.
           main()
         elif wants_to_continue == "e":
-          print("Goodbye!") # Saying goodbye before exit.
+          print("Exit in 3 seconds from now!")  # Exit statement printed.
+          print("3")  # Time counter.
+          time.sleep(1)  # Delay of 1 second.
+          print("2")  # Time counter.
+          time.sleep(1)  # Delay of 1 second.
+          print("1")  # Time counter.
+          time.sleep(1)  # Delay of 1 second.
+          print("Goodbye!")  # Saying goodbye before exit.
+          time.sleep(0.2)  # Giving some time for the user to read the Goodbye message.
           exit()  # Exit the program.
         else:
           print("Continuing to run the app because you didn't provide a valid input!")
@@ -97,7 +114,15 @@ def main():
       loopState = False  # Stop the loop and restart the program.
       main()
     elif first_wants_to_continue == "e":
-      print("Goodbye!") # Saying goodbye before exit.
+      print("Exit in 3 seconds from now!")  # Exit statement printed.
+      print("3")  # Time counter.
+      time.sleep(1)  # Delay of 1 second.
+      print("2")  # Time counter.
+      time.sleep(1)  # Delay of 1 second.
+      print("1")  # Time counter.
+      time.sleep(1)  # Delay of 1 second.
+      print("Goodbye!")  # Saying goodbye before exit.
+      time.sleep(0.2)  # Giving some time for the user to read the Goodbye message.
       exit()  # Exit the program.
     else:
       print("Continuing to run the app because you didn't provide a valid input!")
@@ -114,9 +139,15 @@ sys.setrecursionlimit(2147483647)
 
 # Start the program by calling the main function.
 # Checking if the user is an admin.
-if __name__ == "__main__":
-    if not pyuac.isUserAdmin():
-        print("Re-launching as admin!")
-        pyuac.runAsAdmin()
-    else:        
-        main()  # Already an admin here.
+
+try:  # Use a 'try...except' block to handle potential errors, such as: The user is refuse to run the program as an admin.
+  if __name__ == "__main__":
+      if not pyuac.isUserAdmin():  # Checking if the user is an admin.
+          print("Re-launching as admin!")
+          pyuac.runAsAdmin()  # Restarting the program as an admin.
+      else:        
+          main()  # Already an admin here.
+except:
+  print("There was a problem running the program!\nYou need to run the program as an administrator to run it.")  # Printing error message.
+  loader.load_anim(1, 6)  # Loader function.
+  webbrowser.open(url, new=0, autoraise=True)  # Opens rick roll 😂!
