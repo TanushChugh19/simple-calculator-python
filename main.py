@@ -1,15 +1,31 @@
-import sys  # Import the 'sys' module, which gives us access to system-related functions.
-import time  # Import the 'time' module, which helps us set a slight delay when trying to exit the program.
-import webbrowser  # Import the 'webbrowser' module, which helps us open links automatically.
+try:
+    import sys  # Import the 'sys' module, which gives us access to system-related functions.
+    import time  # Import the 'time' module, which helps us set a slight delay when trying to exit the program.
+    import webbrowser  # Import the 'webbrowser' module, which helps us open links automatically.
 
-import pyuac  # Import the 'pyuac' module, which helps us check if the user running the program is an admin or not. This is necessary because we don't want the CMD windows to pop up.
-from assets import (
-    art,  # Import the 'logo' variable from the 'art.py' file, which is in the assets folder.
-)
-from assets import loader  # Import the 'loader' for loading animations.
-from replit import (
-    clear,  # Import the 'clear' function from the 'replit' module, so that we can clear the console.
-)
+    import pyuac  # Import the 'pyuac' module, which helps us check if the user running the program is an admin or not. This is necessary because we don't want the CMD windows to pop up.
+    from assets import (
+        art,  # Import the 'logo' variable from the 'art.py' file, which is in the assets folder.
+    )
+    from assets import loader  # Import the 'loader' for loading animations.
+    from assets import logger as lg
+    from replit import (
+        clear,  # Import the 'clear' function from the 'replit' module, so that we can clear the console.
+    )
+except ImportError:
+    main_ready = False
+
+if lg.logger_ready == False or loader.loader_ready == False:
+    main_ready = False
+else:
+    main_ready = True
+
+if main_ready == False:
+    lg.calc_logs(message_type="critical", message="Failed to import modules!")
+    print("An unknown error occured, please check the logs file.")
+    exit()
+elif main_ready == True:
+    lg.calc_logs(message_type="info", message="Imported 11 modules, successfully.")
 
 
 # Define functions for basic mathematical operations.
@@ -234,6 +250,10 @@ def main() -> None:
         loader.load_anim(load_type=2, time=5)  # Loading.
         clear()  # Clear the console.
         main()  # Restart the program.
+    except Exception:  # Catch an unkown error (usually happens due to system issues.)
+        print(
+            "A critical error occured, please contact the\nowner and share the issue."
+        )
 
 
 # Increase the recursion limit to handle multiple continuous calculations.
@@ -246,3 +266,6 @@ if __name__ == "__main__":
         pyuac.runAsAdmin()  # Restarting the program as an admin.
     else:
         main()  # Already an admin here.
+
+# lg.logging.exception("message")
+
