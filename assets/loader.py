@@ -1,4 +1,10 @@
-from time import sleep
+loader_ready = True
+
+try:
+    from time import sleep
+except ImportError:
+    loader_ready = False
+
 
 loader_list1 = ["⠻", "⠽", "⠾", "⠷", "⠯", "⠟"]
 loader_list2 = ["/", "-", "\\", "|"]
@@ -28,3 +34,4 @@ def load_anim(load_type: int, time: float) -> str:
                     print(i, end="\r")
     else:
         print("Invalid argument!")
+
